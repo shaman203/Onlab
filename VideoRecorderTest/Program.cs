@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace EEG_Marker
+namespace VideoRecorderTest
 {
     static class Program
     {
