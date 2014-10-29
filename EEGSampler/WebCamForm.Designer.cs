@@ -37,6 +37,7 @@
             this.pictureBoxVideo.Location = new System.Drawing.Point(12, 12);
             this.pictureBoxVideo.Name = "pictureBoxVideo";
             this.pictureBoxVideo.Size = new System.Drawing.Size(510, 378);
+            this.pictureBoxVideo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxVideo.TabIndex = 0;
             this.pictureBoxVideo.TabStop = false;
             // 
@@ -52,6 +53,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

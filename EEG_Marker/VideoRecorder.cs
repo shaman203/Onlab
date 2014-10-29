@@ -78,7 +78,7 @@ namespace EEG_Marker
             if (videoSource != null && videoSource.IsRunning)
             {
                 videoSource.SignalToStop();
-                videoSource.WaitForStop();
+                videoSource.NewFrame -= new AForge.Video.NewFrameEventHandler(videoSource_NewFrame);
                 videoSource = null;
             }
            
@@ -94,8 +94,11 @@ namespace EEG_Marker
 
         public void stopSaving()
         {
-            doSave = false;
-            fileWriter.Close();
+            if (doSave)
+            {
+                doSave = false;
+                fileWriter.Close();
+            }
         }
 
       

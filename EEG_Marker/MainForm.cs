@@ -14,9 +14,22 @@ namespace EEG_Marker
         delegate void setActionTextCallback(string text);
         delegate void changeToActiveCallback();
         delegate void doneActionsCallback();
+        VideoRecorder recorder;
+        IMarker marker;
+
+        CamForm webcamForm;
+
         public MainForm()
         {
             InitializeComponent();
+
+            webcamForm = new CamForm();
+            webcamForm.Show();
+
+            recorder = new VideoRecorder(webcamForm.frameHandler);
+            recorder.startRecording();
+
+            marker = new SerialPortMarker(20);
         }
 
         private void btBrowse_Click(object sender, EventArgs e)
@@ -32,9 +45,9 @@ namespace EEG_Marker
         private void btnStart_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = false;
-            IMarker marker = new SerialPortMarker(20);
             ActionReader reader = new ActionReader(tBoxActionFile.Text, this,marker);
             Thread oThread = new Thread(new ThreadStart(reader.executeActions));
+            recorder.startSaving("test.avi");
             oThread.Start();
         }
 
@@ -78,7 +91,16 @@ namespace EEG_Marker
             else
             {
                 btnStart.Enabled = true;
+                recorder.stopSaving();
             }
         }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            recorder.stopRecording();
+            marker = null;
+        }
+
+
     }
 }

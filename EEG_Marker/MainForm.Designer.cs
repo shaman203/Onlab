@@ -120,6 +120,7 @@
             this.Controls.Add(this.btnStart);
             this.Name = "MainForm";
             this.Text = "EEG_Marker";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
