@@ -34,21 +34,27 @@ namespace EEG_Marker
 
         private void btBrowse_Click(object sender, EventArgs e)
         {
+
             openFileDialog1.ShowDialog();
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-            tBoxActionFile.Text = openFileDialog1.FileName;
+           
+                tBoxActionFile.Text = openFileDialog1.FileName;
+    
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            btnStart.Enabled = false;
-            ActionReader reader = new ActionReader(tBoxActionFile.Text, this,marker);
-            Thread oThread = new Thread(new ThreadStart(reader.executeActions));
-            recorder.startSaving("test.avi");
-            oThread.Start();
+            if (System.IO.File.Exists(tBoxActionFile.Text))
+            {
+                btnStart.Enabled = false;
+                ActionReader reader = new ActionReader(tBoxActionFile.Text, this, marker);
+                Thread oThread = new Thread(new ThreadStart(reader.executeActions));
+                recorder.startSaving(tBoxSessionName.Text);
+                oThread.Start();
+            } 
         }
 
         public void setActionText(string text)
@@ -99,6 +105,16 @@ namespace EEG_Marker
         {
             recorder.stopRecording();
             marker = null;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            tBoxSessionName.Text = saveFileDialog1.FileName;
         }
 
 

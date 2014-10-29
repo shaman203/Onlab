@@ -36,11 +36,13 @@
             this.btBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblAction = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(258, 222);
+            this.btnStart.Location = new System.Drawing.Point(126, 227);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 27);
             this.btnStart.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // tBoxSessionName
             // 
-            this.tBoxSessionName.Location = new System.Drawing.Point(91, 222);
+            this.tBoxSessionName.Location = new System.Drawing.Point(93, 201);
             this.tBoxSessionName.Name = "tBoxSessionName";
             this.tBoxSessionName.Size = new System.Drawing.Size(161, 20);
             this.tBoxSessionName.TabIndex = 1;
@@ -58,11 +60,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 225);
+            this.label1.Location = new System.Drawing.Point(12, 204);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Session name";
+            this.label1.Text = "Save avi as....";
             // 
             // tBoxActionFile
             // 
@@ -106,11 +108,26 @@
             this.lblAction.TabIndex = 6;
             this.lblAction.Text = "Init";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(260, 199);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Browse";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 261);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblAction);
             this.Controls.Add(this.btBrowse);
             this.Controls.Add(this.label2);
@@ -136,6 +153,8 @@
         private System.Windows.Forms.Button btBrowse;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblAction;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 
